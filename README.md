@@ -39,8 +39,6 @@ mopidy-docker/
 ├── mopidy-src/
 │   ├── Dockerfile
 │   ├── entrypoint.sh
-│   ├── mopidy/
-│   ├── mopidy-local/
 │   └── mopidy-requirements.txt
 ├── config/
 │   └── mopidy.conf
