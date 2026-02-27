@@ -1,0 +1,7 @@
+data/*
+!data/.keep
+
+cache/*
+!cache/.keep
+*.log
+__pycache__/

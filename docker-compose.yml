@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  mopidy:
+    build:
+      context: ./mopidy-src
+      args:
+        AUDIO_GID: 29
+        USER_ID: 1000
+
+    container_name: mopidy
+    restart: unless-stopped
+
+    ports:
+      - "6680:6680"
+      - "6600:6600"
+
+    devices:
+      - /dev/snd:/dev/snd
+
+    group_add:
+      - "29"
+
+    volumes:
+      - ./config:/config
+      - ./data:/data
+      - ./cache:/cache
+      - /mnt/music:/music
+
+    command: >
+      sh -c "
+      mopidy --config /config/mopidy.conf && mopidy --config /config/mopidy.conf local scan
+      "
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6680"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+    networks:
+      - mopidy-net
+
+networks:
+  mopidy-net:
+    driver: bridge

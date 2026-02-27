@@ -1,0 +1,12 @@
+certifi==2025.11.12
+charset-normalizer==3.4.4
+idna==3.11
+Mopidy-MPD==3.3.0
+pycairo==1.29.0
+pykka==4.4.0
+requests==2.32.5
+setuptools==80.9.0
+tornado==6.5.2
+uritools==5.0.0
+urllib3==2.5.0
+websocket-client==1.9.0
