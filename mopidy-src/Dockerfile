@@ -32,11 +32,11 @@ WORKDIR /app
 COPY mopidy-requirements.txt .
 RUN pip install --no-cache-dir -r mopidy-requirements.txt
 
-COPY mopidy ./mopidy
-COPY mopidy-local ./mopidy-local
 
-RUN pip install --no-cache-dir -e ./mopidy
-RUN pip install --no-cache-dir -e ./mopidy-local
+RUN pip install --no-cache-dir \
+    "mopidy~=3.4" \
+    "mopidy-local~=3.3"
+
 
 RUN mkdir -p /config /data /cache /music
 
