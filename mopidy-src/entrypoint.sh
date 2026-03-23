@@ -4,6 +4,9 @@ set -e
 echo "Waiting 2 seconds for volumes..."
 sleep 2
 
+echo "Ensuring persistent directories exist..."
+mkdir -p /data/playlists /cache
+
 echo "Running initial local scan..."
 mopidy --config /config/mopidy.conf local scan || true
 
