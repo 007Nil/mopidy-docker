@@ -35,7 +35,11 @@ RUN pip install --no-cache-dir -r mopidy-requirements.txt
 
 RUN pip install --no-cache-dir \
     "mopidy~=3.4" \
-    "mopidy-local~=3.3"
+    "mopidy-local~=3.3" \
+    "flask~=3.0" \
+    "requests~=2.32"
+
+COPY api.py .
 
 
 RUN mkdir -p /config /data /cache /music
@@ -50,7 +54,7 @@ RUN groupadd -g ${AUDIO_GID} audio || true \
 
 USER mopidy
 
-EXPOSE 6680 6600
+EXPOSE 6680 6600 9000
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

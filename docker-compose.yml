@@ -14,6 +14,7 @@ services:
     ports:
       - "6680:6680"
       - "6600:6600"
+      - "9000:9000"
 
     devices:
       - /dev/snd:/dev/snd
